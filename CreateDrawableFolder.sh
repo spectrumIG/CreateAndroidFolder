@@ -23,25 +23,16 @@
 #################################################################
 
 show_window (){
-	density=$(zenity --list  --title="Number of folders" --checklist --column="Density" --column="" FALSE "ldpi" FALSE "mdpi" FALSE "hdpi" FALSE "xhdpi" FALSE 					"xxhdpi" FALSE "xxxhdpi" FALSE "tvdpi" --separator=':')
-
+	density=$(zenity --list --width="460" --height="300" --title="Number of folders" --checklist --column="Density" --column="" FALSE "ldpi" FALSE "mdpi" FALSE 	"hdpi" FALSE "xhdpi" FALSE "xxhdpi" FALSE "xxxhdpi" FALSE "tvdpi" --separator=':')
 }
 
 #################################################################
-#
-#
-#
 #################################################################
-
-
 show_window
 
 IFS=":"
 for word in $density
 do
-	case $word in
-	  ldpi) echo Item A ;;
-      mdpi) echo Item B ;;
-      hdpi) echo Item C ;;
-     esac
+	`mkdir ./$word`
+
 done
