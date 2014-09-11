@@ -22,13 +22,13 @@
 #
 #################################################################
 
-show_window (){
+show_window_for_density (){
 	density=$(zenity --list --width="460" --height="300" --title="Number of folders" --checklist --column="Density" --column="" FALSE "ldpi" FALSE "mdpi" FALSE 	"hdpi" FALSE "xhdpi" FALSE "xxhdpi" FALSE "xxxhdpi" FALSE "tvdpi" --separator=':')
 }
 
 #################################################################
 #################################################################
-show_window
+show_window_for_density
 
 IFS=":"
 for word in $density
