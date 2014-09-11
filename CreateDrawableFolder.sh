@@ -1,6 +1,6 @@
 #!/bin/bash
 # ---------------------------------------------------------------------------
-# CreateDrawableFolder - Nautilus scrop
+# CreateDrawableFolder - Nautilus script
 
 # Copyright 2014, Daniele Andreoli
 
@@ -16,9 +16,25 @@
 # more details.
 
 
+#################################################################
+#
+# Show window selection and get the result in an ARRAY!
+#
+#################################################################
+
+show_window (){
+	density=$(zenity --list  --title="Number of folders" --checklist --column="Density" --column="" FALSE "ldpi" FALSE "mdpi" FALSE "hdpi" FALSE "xhdpi" FALSE 					"xxhdpi" FALSE "xxxhdpi" FALSE "tvdpi" --separator=':')
+
+}
+
+#################################################################
+#
+#
+#
+#################################################################
 
 
-density=$(zenity  --list  --title="Number of folders" --checklist --column="Density" --column="" FALSE "ldpi" FALSE "mdpi" FALSE "hdpi" FALSE "xhdpi" FALSE "xxhdpi" FALSE "xxxhdpi" FALSE "tvdpi" --separator=':')
+show_window
 
 IFS=":"
 for word in $density
