@@ -22,6 +22,9 @@
 #
 #################################################################
 
+DRAWABLE_SUF="drawable-"
+
+
 show_window_for_density (){
 	density=$(zenity --list --width="460" --height="300" --title="Number of folders" --checklist --column="Density" --column="" FALSE "ldpi" FALSE "mdpi" FALSE 	"hdpi" FALSE "xhdpi" FALSE "xxhdpi" FALSE "xxxhdpi" FALSE "tvdpi" --separator=':')
 }
@@ -33,6 +36,6 @@ show_window_for_density
 IFS=":"
 for word in $density
 do
-	`mkdir ./$word`
+	`mkdir $NAUTILUS_SCRIPT_CURRENT_URI/$DRAWABLE_SUF$word`
 
 done
