@@ -16,26 +16,58 @@
 # more details.
 
 
+
+
+DRAWABLE_SUF="drawable-"
+LAYOUT_SUF="layout-"
+
+show_menu_choice (){
+choice=$(zenity --list --text "Choose which type of folders to create" --radiolist --column="Choices" --column="Type" TRUE "drawable" FALSE "layout")
+
+}
 #################################################################
 #
 # Show window selection and get the result in an ARRAY!
 #
 #################################################################
-
-DRAWABLE_SUF="drawable-"
-
-
 show_window_for_density (){
-	density=$(zenity --list --width="460" --height="300" --title="Number of folders" --checklist --column="Density" --column="" FALSE "ldpi" FALSE "mdpi" FALSE 	"hdpi" FALSE "xhdpi" FALSE "xxhdpi" FALSE "xxxhdpi" FALSE "tvdpi" --separator=':')
+	density=$(zenity --list --width="460" --height="300" --title="Number of folders" --checklist --column="Density" --column="" FALSE "ldpi" FALSE "mdpi" FALSE "hdpi" FALSE "xhdpi" FALSE "xxhdpi" FALSE "xxxhdpi" FALSE "tvdpi" --separator=':')
 }
 
-#################################################################
-#################################################################
-show_window_for_density
+show_window_for_layout (){
+	layout=$(zenity --list --width="460" --height="300" --title="Number of folders" --checklist --column="Density" --column="" FALSE "ldpi" FALSE "mdpi" FALSE "hdpi" FALSE "xhdpi" FALSE "xxhdpi" FALSE "xxxhdpi" FALSE "tvdpi" --separator=':')
 
+}
+
+create_drawable (){
 IFS=":"
 for word in $density
 do
 	`mkdir $NAUTILUS_SCRIPT_CURRENT_URI/$DRAWABLE_SUF$word`
 
 done
+}
+
+create_layout (){
+IFS=":"
+for word in $layout
+do
+	`mkdir $NAUTILUS_SCRIPT_CURRENT_URI/$LAYOUT_SUF$word`
+
+done
+}
+
+#################################################################
+#################################################################
+show_menu_choice
+
+case $choice in
+layout)
+	show_window_for_layout
+	create_layout
+	;;
+drawable)
+show_window_for_density
+	create_drawable
+	;;
+esac
