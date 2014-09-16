@@ -14,10 +14,6 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 # GNU General Public License at <http://www.gnu.org/licenses/> for
 # more details.
-
-
-
-
 DRAWABLE_SUF="drawable-"
 LAYOUT_SUF="layout-"
 
@@ -25,11 +21,7 @@ show_menu_choice (){
 choice=$(zenity --list --text "Choose which type of folders to create" --radiolist --column="Choices" --column="Type" TRUE "drawable" FALSE "layout")
 
 }
-#################################################################
-#
-# Show window selection and get the result in an ARRAY!
-#
-#################################################################
+
 show_window_for_density (){
 	density=$(zenity --list --width="460" --height="300" --title="Number of folders" --checklist --column="Density" --column="" FALSE "ldpi" FALSE "mdpi" FALSE "hdpi" FALSE "xhdpi" FALSE "xxhdpi" FALSE "xxxhdpi" FALSE "tvdpi" --separator=':')
 }
